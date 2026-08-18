@@ -1,0 +1,53 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "CMake: configure Debug",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--preset", "macos-debug"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "CMake: build all plug-in formats (Debug)",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--build", "--preset", "debug-all"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOrder": "sequence",
+      "dependsOn": "CMake: configure Debug",
+      "problemMatcher": "$gcc",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Validate: Audio Unit (auval)",
+      "type": "shell",
+      "command": "auval",
+      "args": ["-v", "aufx", "Apfx", "Alxp"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOrder": "sequence",
+      "dependsOn": "CMake: build all plug-in formats (Debug)",
+      "problemMatcher": []
+    },
+    {
+      "label": "CMake: clean Debug",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--build", "--preset", "debug-all", "--target", "clean"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

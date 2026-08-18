@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Build + debug Standalone effect",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/AudioProgrammerPlugin_artefacts/Debug/Standalone/Audio Programmer Plugin.app/Contents/MacOS/Audio Programmer Plugin",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Validate: Audio Unit (auval)",
+      "args": [],
+      "env": {},
+      "terminal": "integrated"
+    }
+  ]
+}
